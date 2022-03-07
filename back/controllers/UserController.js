@@ -1,4 +1,6 @@
 const User = require('../models/UserModel');
+const CryptoJS = require('crypto-js');
+
 
 //GET ALL USER
 exports.FindAll = async (req, res) => {
@@ -76,6 +78,12 @@ exports.Update = async (req, res) => {
         try {
             if(!req.body){
               return res.status(400).send({message: 'All fields are required'}) 
+            }
+            if(req.body.password){
+                req.body.password = CryptoJS.AES.encrypt(
+                    req.body.password,
+                    process.env.SECRET_KEY
+                ).toString();
             }
             
             const updateUser = await User.findbyIdAndUpdate(req.params.id,
