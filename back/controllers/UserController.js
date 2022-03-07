@@ -2,6 +2,9 @@ const User = require('../models/UserModel');
 const CryptoJS = require('crypto-js');
 
 
+
+
+
 //GET ALL USER
 exports.FindAll = async (req, res) => {
     const query = req.query.new;
