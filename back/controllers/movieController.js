@@ -1,4 +1,4 @@
-const Movie = require("../models/Movie.js");
+const Movie = require("../models/MovieModel.js");
 
 exports.findAll = async (req, res) => {
     try {
@@ -29,6 +29,25 @@ exports.create = async (req, res) => {
         }
     } else {
       res.status(403).json("Vous n'êtes pas administrateur");
+    }
+};
+
+exports.update = async (req, res) => {
+    if (req.user.isAdmin) {
+        try {
+            const updatedMovie = await Movie.findByIdAndUpdate(
+                req.params.id,
+                {
+                    $set: req.body,
+                },
+                { new: true }
+            );
+            res.status(200).json(updatedMovie);
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    } else {
+        res.status(403).json("Vous n'êtes pas administrateur");
     }
 };
 
