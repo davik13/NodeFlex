@@ -1,4 +1,4 @@
-const Movie = require("../models/MovieModel.js");
+const Movie = require("../routes/MovieRoutes.js");
 
 exports.findAll = async (req, res) => {
     try {
