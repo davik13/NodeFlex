@@ -1,12 +1,15 @@
-const express = require('express')
-const router = express.Router();
+const mongoose = require("mongoose");
 
-const MovieController = require('../controllers/MovieController');
+const MovieSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true, unique: true },
+    desc: { type: String },
+    img: { type: String },
+    trailer: { type: String },
+    year: { type: Number },
+    genre: { type: String },
+  },
+  { timestamps: true }
+);
 
-router.get('/', MovieController.findAll);
-router.get('/:id', MovieController.findOne);
-router.post('/', MovieController.create);
-router.delete('/:id', MovieController.delete);
-router.put('/:id', MovieController.update);
-
-module.exports = router;
+module.exports = mongoose.model("Movie", MovieSchema);
