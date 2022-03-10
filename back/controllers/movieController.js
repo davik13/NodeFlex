@@ -1,17 +1,22 @@
 const Movie = require("../models/MovieModel.js");
 
+// GET ALL 
 exports.findAll = async (req, res) => {
-    const query = req.query.new;
-    try {
-        const movies = query
-              ? await Movie.find().sort({ _id: -1 }).limit()
-              : await Movie.find();
-            res.status(200).json(movies);
-    } catch (err) {
-        res.status(500).json(err);
+    if (req.query.user.isAdmin){
+        try {
+            const movies =  await Movie.find();
+            res.status(200).json(movies.reverse());
+        } catch (err) {
+            res.status(500).json(err);
+        }
     }
+    else{
+        res.status(403).json("tu n'es pas authoriser")
+    }
+   
 };
 
+//GET MOVIE
 exports.findOne = async (req, res) => {
     try {
         const movie = await Movie.findById(req.params.id);
@@ -21,6 +26,32 @@ exports.findOne = async (req, res) => {
     }
 };
 
+//GET RANDOM MOVIES
+
+exports.randomMovie = async (req, res) => {
+    const type = req.query.type;
+    let movie;
+    try {
+        if(type === 'series'){
+            movie= await Movie.aggregate([
+                {$match: {isSeriess: true} },
+                { $sample: {size: 1} },
+            ]);
+        }
+        else{
+            movie = await Movie.aggregate([
+                { $match: {isSeriess: false} },
+                { $sample: {size: 1}},
+            ]);
+        }
+        res.status(200).json(movie);
+    } catch (error) {
+        res.status(500).json(error)
+    }
+
+}
+
+//CREATE MOVIE
 exports.create = async (req, res) => {
     if (req.user.isAdmin) {
         const newMovie = new Movie(req.body);
@@ -35,6 +66,7 @@ exports.create = async (req, res) => {
     }
 };
 
+//UPDATE MOVIE
 exports.update = async (req, res) => {
     if (req.user.isAdmin) {
         try {
@@ -54,6 +86,7 @@ exports.update = async (req, res) => {
     }
 };
 
+//DELETE MOVIE
 exports.delete = async (req, res) => {
     if (req.user.isAdmin) {
         try {
