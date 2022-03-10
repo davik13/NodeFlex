@@ -39,12 +39,6 @@ export default function Login() {
           <button className="loginButton" onClick={handleLogin}>
             Connexion
           </button>
-          <span>
-            Nouveau sur NodeFlex ? <b>Inscrivez vous maintenant</b>
-          </span>
-          <small>
-           Cette page est protégée par Google Recaptcha.
-          </small>
         </form>
       </div>
     </div>
