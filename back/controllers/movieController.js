@@ -1,9 +1,12 @@
-const Movie = require("../routes/MovieRoutes.js");
+const Movie = require("../models/MovieModel.js");
 
 exports.findAll = async (req, res) => {
+    const query = req.query.new;
     try {
-        const movies = await Movie.find();
-        res.status(200).json();
+        const movies = query
+              ? await Movie.find().sort({ _id: -1 }).limit()
+              : await Movie.find();
+            res.status(200).json(movies);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -28,7 +31,7 @@ exports.create = async (req, res) => {
             res.status(500).json(err);
         }
     } else {
-      res.status(403).json("Vous n'êtes pas administrateur");
+        res.status(403).json("Vous n'êtes pas administrateur");
     }
 };
 
