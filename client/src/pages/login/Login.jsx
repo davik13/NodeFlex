@@ -25,7 +25,7 @@ export default function Login() {
       </div>
       <div className="container">
         <form>
-          <h1>Sign In</h1>
+          <h1>Connexion</h1>
           <input
             type="email"
             placeholder="Email or phone number"
@@ -37,15 +37,8 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button className="loginButton" onClick={handleLogin}>
-            Sign In
+            Connexion
           </button>
-          <span>
-            New to Netflix? <b>Sign up now.</b>
-          </span>
-          <small>
-            This page is protected by Google reCAPTCHA to ensure you're not a
-            bot. <b>Learn more</b>.
-          </small>
         </form>
       </div>
     </div>

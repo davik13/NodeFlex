@@ -8,7 +8,6 @@ import axios from "axios";
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
   const [genre, setGenre] = useState(null);
-
   useEffect(() => {
     const getRandomLists = async () => {
       try {
@@ -19,11 +18,13 @@ const Home = ({ type }) => {
           {
             headers: {
               token:
-              "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+                "Bearer " +
+                JSON.parse(localStorage.getItem("user")).accessToken,
             },
           }
         );
         setLists(res.data);
+        console.log(res);
       } catch (err) {
         console.log(err);
       }

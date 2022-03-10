@@ -9,13 +9,14 @@ export default function Featured({ type, setGenre }) {
   useEffect(() => {
     const getRandomContent = async () => {
       try {
-        const res = await axios.get(`/movies/random?type=${type}`, {
+        const res = await axios.get(`/movies?type=movies`, {
           headers: {
             token:
-              "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
           },
         });
         setContent(res.data[0]);
+        console.log("content crée");
       } catch (err) {
         console.log(err);
       }
@@ -23,7 +24,6 @@ export default function Featured({ type, setGenre }) {
     getRandomContent();
   }, [type]);
 
-  console.log(content);
   return (
     <div className="featured">
       {type && (
@@ -32,8 +32,7 @@ export default function Featured({ type, setGenre }) {
           <select
             name="genre"
             id="genre"
-            onChange={(e) => setGenre(e.target.value)}
-          >
+            onChange={(e) => setGenre(e.target.value)}>
             <option>Genre</option>
             <option value="adventure">Adventure</option>
             <option value="comedy">Comedy</option>
