@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const userRoutes = require("./routes/UserRoute");
 const authRoutes = require("./routes/AuthRoute");
 const movieRoutes = require("./routes/MovieRoute");
+const listRoutes = require("./routes/ListRoutes");
 dotenv.config();
 
 mongoose
@@ -23,6 +24,7 @@ mongoose
     app.use("/api/users", userRoutes);
     app.use("/api/auth", authRoutes);
     app.use("/api/movie", movieRoutes);
+    app.use("/api/list", listRoutes);
 
     app.listen(process.env.PORT || 5000, ()=> {
         console.log("Server is running ")
