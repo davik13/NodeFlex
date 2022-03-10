@@ -2,15 +2,12 @@ const Movie = require('../models/MovieModel.js')
 
 // GET ALL
 exports.findAll = async (req, res) => {
-  if (req.query.user.isAdmin) {
-    try {
-      const movies = await Movie.find()
-      res.status(200).json(movies.reverse())
-    } catch (err) {
-      res.status(500).json(err)
-    }
-  } else {
-    res.status(403).json("tu n'es pas authoriser")
+  //verif @todo
+  try {
+    const movies = await Movie.find()
+    res.status(200).json(movies.reverse())
+  } catch (err) {
+    res.status(500).json(err)
   }
 }
 
@@ -29,21 +26,25 @@ exports.findOne = async (req, res) => {
 exports.randomMovie = async (req, res) => {
   const type = req.query.type
   let movie
+  console.log('random 1')
+
   try {
     if (type === 'series') {
       movie = await Movie.aggregate([
-        { $match: { isSeriess: true } },
+        { $match: { isSeries: true } },
         { $sample: { size: 1 } }
       ])
     } else {
       movie = await Movie.aggregate([
-        { $match: { isSeriess: false } },
+        { $match: { isSeries: false } },
         { $sample: { size: 1 } }
       ])
     }
     res.status(200).json(movie)
+    console.log('random ok ')
   } catch (error) {
     res.status(500).json(error)
+    console.log('random fail ')
   }
 }
 

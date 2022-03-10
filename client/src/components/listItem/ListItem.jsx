@@ -14,16 +14,16 @@ export default function ListItem({ index, item }) {
   const [movie, setMovie] = useState({});
 
   useEffect(() => {
+    let isMounted = true;
     const getMovie = async () => {
       try {
-        const res = await axios.get("/movies" + item, {
+        const res = await axios.get("/movies/find/" + item, {
           headers: {
             token:
-            "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
           },
         });
         setMovie(res.data);
-        console.log(res.data)
       } catch (err) {
         console.log(err);
       }
@@ -37,8 +37,7 @@ export default function ListItem({ index, item }) {
         className="listItem"
         style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
         onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
+        onMouseLeave={() => setIsHovered(false)}>
         <img src={movie?.imgSm} alt="" />
         {isHovered && (
           <>
