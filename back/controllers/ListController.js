@@ -19,15 +19,11 @@ exports.Create = async (req, res) => {
 //DELETE
 
 exports.Delete = async (req, res) => {
-  if (req.user.isAdmin) {
-    try {
-      await List.findByIdAndDelete(req.params.id)
-      res.status(201).json('La liste a été supprimée')
-    } catch (error) {
-      res.status(500).json(error)
-    }
-  } else {
-    res.status(403).json('vous netes pas autorisé')
+  try {
+    await List.findByIdAndDelete(req.params.id)
+    res.status(201).json('La liste a été supprimée')
+  } catch (error) {
+    res.status(500).json(error)
   }
 }
 

@@ -9,7 +9,7 @@ export default function Featured({ type, setGenre }) {
   useEffect(() => {
     const getRandomContent = async () => {
       try {
-        const res = await axios.get(`/movies?type=movies`, {
+        const res = await axios.get(`/movies/random?type=${type}`, {
           headers: {
             token:
               "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
@@ -34,26 +34,26 @@ export default function Featured({ type, setGenre }) {
             id="genre"
             onChange={(e) => setGenre(e.target.value)}>
             <option>Genre</option>
-            <option value="adventure">Adventure</option>
-            <option value="comedy">Comedy</option>
+            <option value="adventure">Aventure</option>
+            <option value="comedy">Comédie</option>
             <option value="crime">Crime</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="historical">Historical</option>
-            <option value="horror">Horror</option>
+            <option value="fantasy">Fantastique</option>
+            <option value="historical">Historique</option>
+            <option value="horror">Horreur</option>
             <option value="romance">Romance</option>
             <option value="sci-fi">Sci-fi</option>
             <option value="thriller">Thriller</option>
             <option value="western">Western</option>
             <option value="animation">Animation</option>
-            <option value="drama">Drama</option>
-            <option value="documentary">Documentary</option>
+            <option value="drama">Drame</option>
+            <option value="documentary">Documentaire</option>
           </select>
         </div>
       )}
-      <img src={content.img} alt="" />
+      <img src={content.img} alt="" className="bannerImg" />
       <div className="info">
         <img src={content.imgTitle} alt="" />
-        <span className="desc">{content.desc}</span>
+        <h2 className="titre">{content.title}</h2>
         <div className="buttons">
           <button className="play">
             <PlayArrow />

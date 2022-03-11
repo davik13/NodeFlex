@@ -18,7 +18,7 @@ const Navbar = () => {
       <div className="container">
         <div className="left">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
+            src="https://fontmeme.com/permalink/220311/98498e42918e9c088acd21ba9c527fbf.png"
             alt=""
           />
           <Link to="/" className="link">
