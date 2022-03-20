@@ -26,7 +26,6 @@ exports.findOne = async (req, res) => {
 exports.randomMovie = async (req, res) => {
   const type = req.query.type
   let movie
-  console.log(type)
 
   try {
     if (type === 'series') {
@@ -41,10 +40,8 @@ exports.randomMovie = async (req, res) => {
       ])
     }
     res.status(200).json(movie)
-    console.log('random ok ')
   } catch (error) {
     res.status(500).json(error)
-    console.log('random fail ')
   }
 }
 

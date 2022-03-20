@@ -24,7 +24,6 @@ const Home = ({ type }) => {
           }
         );
         setLists(res.data);
-        console.log(res);
       } catch (err) {
         console.log(err);
       }
