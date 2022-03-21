@@ -22,7 +22,7 @@ export default function Register() {
     setPassword(passwordRef.current.value);
     setUsername(usernameRef.current.value);
     try {
-      await axios.post("auth/register", { email,username, password });
+      await axios.post("auth/register", { email, username, password });
       history.push("/login");
     } catch (err) {}
   };
@@ -32,7 +32,7 @@ export default function Register() {
         <div className="wrapper">
           <img
             className="logo"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
+            src="https://fontmeme.com/permalink/220311/98498e42918e9c088acd21ba9c527fbf.png"
             alt=""
           />
           <button className="loginButton">Inscription</button>
@@ -41,20 +41,26 @@ export default function Register() {
       <div className="container">
         <h1>Films et séries en illimité</h1>
         <h2>Regarder partout, annuler n'importe quand</h2>
-        <p>
-          Prêt ? Entrez votre email et entrez dans l'univers NodeFlex
-        </p>
+        <p>Prêt ? Entrez votre email et entrez dans l'univers NodeFlex</p>
         {!email ? (
           <div className="input">
-            <input type="email" placeholder="email address" ref={emailRef} />
+            <input type="email" placeholder="Adresse e-mail" ref={emailRef} />
             <button className="registerButton" onClick={handleStart}>
               Démarrer
             </button>
           </div>
         ) : (
           <form className="input">
-            <input type="username" placeholder="username" ref={usernameRef} />
-            <input type=  "password" placeholder="password" ref={passwordRef} />
+            <input
+              type="username"
+              placeholder="Nom d'utilisateur"
+              ref={usernameRef}
+            />
+            <input
+              type="password"
+              placeholder="Mot de passe"
+              ref={passwordRef}
+            />
             <button className="registerButton" onClick={handleFinish}>
               Inscription
             </button>

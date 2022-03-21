@@ -1,4 +1,4 @@
-@import "../../app.scss";
+@import '../../app.scss';
 
 .featured {
   height: 76vh;
@@ -24,7 +24,7 @@
     }
   }
 
-  #genre{
+  #genre {
     z-index: 2;
   }
 
@@ -32,8 +32,11 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: relative;
   }
-
+  .bannerImg {
+    filter: brightness(0.45);
+  }
   .info {
     width: 35%;
     position: absolute;
@@ -44,7 +47,7 @@
     flex-direction: column;
 
     img {
-      width: 40vw;
+      max-height: 200px;
       margin-top: 100px;
     }
 
