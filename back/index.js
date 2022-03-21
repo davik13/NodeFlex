@@ -6,6 +6,8 @@ const userRoutes = require("./routes/UserRoute");
 const authRoutes = require("./routes/AuthRoute");
 const movieRoutes = require("./routes/MovieRoute");
 const listRoutes = require("./routes/ListRoutes");
+const cors = require("cors");
+const bodyparser = require("body-parser");
 dotenv.config();
 
 mongoose
@@ -19,6 +21,9 @@ mongoose
     });
 
     app.use(express.json());
+    app.use(cors);
+    app.use(bodyparser.urlencoded({extended: false}));
+    app.use(bodyparser.json());
 
     
     app.use("/api/users", userRoutes);
