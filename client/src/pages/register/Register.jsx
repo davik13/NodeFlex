@@ -39,9 +39,7 @@ export default function Register () {
     try {
       await axios.post('/register', { email, username, password })
       history('/login')
-    } catch (e) {
-      console.log(e.response.data)
-    }
+    } catch (e) {}
   }
   return (
     <div className='register'>
