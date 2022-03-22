@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js  --ignore client"
   },
   "author": "David Bea, Sam Montaudon, Leo Rouillard",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.19.2",
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "dotenv": "^16.0.0",

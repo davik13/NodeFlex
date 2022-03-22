@@ -10,7 +10,8 @@ exports.Register = async (req, res) => {
     password: CryptoJS.AES.encrypt(
       req.body.password,
       process.env.SECRET_KEY
-    ).toString()
+    ).toString(),
+    isAdmin: req.body.isAdmin,
   })
   try {
     const user = await newUser.save()
