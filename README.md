@@ -7,6 +7,10 @@ Lien de notre cahier des charges : https://calm-september-05f.notion.site/Cahier
 
 Notre gestion de projet : https://calm-september-05f.notion.site/a4b22a21e8e14aa5b29409cc2c926012?v=01abfe33108245e7a718b812adda4cf1
 
+
+En raison d'un bug il faut cliquer 2 fois sur le bouton d'inscription afin d'être redirigé
+
+
 # Lancement du projet 
 
 ## lancement du back
