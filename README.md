@@ -18,3 +18,48 @@ Notre gestion de projet : https://calm-september-05f.notion.site/a4b22a21e8e14aa
   
   npm run start
   
+
+# Routes API Postman
+
+
+
+## localhost:3000/users
+
+get : /id
+
+get : /
+
+get : /stats
+
+delete : /:id
+
+put : /:id
+
+
+
+## localhost:3000/movies
+
+get : /
+
+get : /find/:id
+
+post : /
+
+delete : /:id
+
+put : /:id
+
+get : /random 
+
+
+
+## localhost:3000/lists
+
+get : /
+
+delete : /:id
+
+post : /
+
+
+
