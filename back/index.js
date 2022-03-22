@@ -1,12 +1,14 @@
-const express = require('express')
-const app = express()
-const mongoose = require('mongoose')
-const dotenv = require('dotenv')
-const userRoutes = require('./routes/UserRoute')
-const authRoutes = require('./routes/AuthRoute')
-const movieRoutes = require('./routes/MovieRoute')
-const listRoutes = require('./routes/ListRoutes')
-dotenv.config()
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const userRoutes = require("./routes/UserRoute");
+const authRoutes = require("./routes/AuthRoute");
+const movieRoutes = require("./routes/MovieRoute");
+const listRoutes = require("./routes/ListRoutes");
+const cors = require("cors");
+const bodyparser = require("body-parser");
+dotenv.config();
 
 mongoose
   .connect(process.env.MONGO_URL, {
@@ -18,7 +20,13 @@ mongoose
     console.error(err)
   })
 
-app.use(express.json())
+
+  
+    app.use(express.json());
+    app.use(cors());
+    app.use(bodyparser.urlencoded({extended: false}));
+    app.use(bodyparser.json());
+    
 
 app.use('/api/users', userRoutes)
 app.use('/api/', authRoutes)
