@@ -40,7 +40,7 @@ export default function Register () {
       await axios.post('/register', { email, username, password })
       history('/login')
     } catch (e) {
-      alert(e.response.data)
+      console.log(e.response.data)
     }
   }
   return (
