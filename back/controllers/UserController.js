@@ -4,7 +4,7 @@ const CryptoJS = require('crypto-js')
 //GET ALL USER
 exports.FindAll = async (req, res) => {
   const query = req.query.new
-  if (req.user.isAdmin) {
+  // if (req.user.isAdmin) {
     try {
       const users = query
         ? await User.find()
@@ -15,11 +15,11 @@ exports.FindAll = async (req, res) => {
     } catch (error) {
       res.status(500).json(error)
     }
-  } else {
-    res
-      .status(403)
-      .json({ message: 'vous netes pas autorisé à voir les users' })
-  }
+  // } else {
+  //   res
+  //     .status(403)
+  //     .json({ message: 'vous netes pas autorisé à voir les users' })
+  // }
 }
 
 //GET USER

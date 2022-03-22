@@ -34,6 +34,7 @@ export default function ListItem({ index, item }) {
   return (
     <Link to={{ pathname: "/watch", movie: movie }}>
       <div
+        key={item._id}
         className="listItem"
         style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
         onMouseEnter={() => setIsHovered(true)}

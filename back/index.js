@@ -21,7 +21,7 @@ mongoose
 app.use(express.json())
 
 app.use('/api/users', userRoutes)
-app.use('/api/auth', authRoutes)
+app.use('/api/', authRoutes)
 app.use('/api/movies', movieRoutes)
 app.use('/api/lists', listRoutes)
 
